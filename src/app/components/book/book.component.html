@@ -1,0 +1,15 @@
+<article>
+<section itemscope itemtype="https://schema.org/Book">
+    <img itemprop="image" [src]="book?.image" />
+    <h1 itemprop="name">{{book?.title ?? "Untitled"}}</h1>
+    <td class="star-rating">
+        <data itemprop="aggregateRating" [value]="book?.rating">{{book?.rating | starRating}}</data>
+        <small><b>Rating:</b> {{book?.rating ?? 0}}/5</small>
+    </td>
+    <div class="byline">By&nbsp;<a class="author-link" [routerLink]="['/authors', book?.authorId]">{{book?.author ?? "Unknown Author"}}</a> ({{book?.datePublished | date}})</div>
+    <p itemprop="description">{{book?.description ?? "Quos molestias dolorum est et quibusdam. Itaque dolores reiciendis neque explicabo aut nesciunt. Tempora exercitationem dignissimos tenetur adipisci sed totam doloribus. Quia officia qui quo. Quidem ea voluptatem necessitatibus quia qui. Voluptas quia voluptas et."}}</p>
+    <aside class="links">
+        <a href="">Buy on Site</a>
+    </aside>
+</section>
+</article>

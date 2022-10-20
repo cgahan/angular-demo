@@ -1,0 +1,59 @@
+<app-modal #modal (accept)="addBook($event)">
+  <label>
+    <span>Title</span>
+    <input required type="text" name="title" />
+  </label>
+  <label>
+    <span>Author</span>
+    <select required name="authorId">
+      <option disabled selected></option>
+      <option *ngFor="let author of authors" [value]="author.id">
+        {{author}}
+      </option>
+    </select>
+  </label>
+  <label>
+    <span>Rating</span>
+    <app-star-picker name="rating"></app-star-picker>
+  </label>
+  <label>
+    <span>Date published</span>
+    <input type="date" name="datePublished" required />
+  </label>
+  <textarea name="description" placeholder="Description (optional)"></textarea>
+</app-modal>
+
+<div class="top">
+  <p>{{books.length}} {{books.length === 1 ? 'work' : 'works'}}</p>
+  <button *ngIf="allowModal" (click)="modal.show()">Add New</button>
+</div>
+<section>
+  <table>
+    <tr itemscope itemtype="https://schema.org/Book" *ngFor="let book of books">
+      <td style="display: contents">
+        <a [routerLink]="['/books', book.id]"></a>
+      </td>
+      <td itemprop="image">
+          <img class="book-image" [src]="book?.image" />
+      </td>
+      <td itemprop="name">
+          <b>{{ book?.title ?? "Untitled" }}</b>
+      </td>
+      <td itemprop="author">
+        {{ book.author }}
+      </td>
+      <td itemprop="datePublished">
+          {{ book.datePublished | date: "YYYY" }}
+      </td>
+      <td itemprop="aggregateRating">
+          <data [value]="book.rating" [title]="(book.rating ?? 0) + '/5'">{{
+            book.rating | starRating
+          }}</data>
+      </td>
+      <td itemprop="description">
+          {{ book?.description ?? "" | slice: 0:50
+          }}{{ (book?.description?.length ?? 0) > 50 ? "&hellip;" : "" }}
+      </td>
+    </tr>
+  </table>
+</section>

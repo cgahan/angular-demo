@@ -1,0 +1,92 @@
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section {
+    column-gap: 3rem;
+    font-size: 1rem;
+
+    @media (min-width: 900px) {
+        column-count: 2;
+    }
+    @media (min-width: 1500px) {
+        column-count: 3;
+    }
+}
+
+table {
+    display: contents;
+}
+
+tr {
+    display: grid;
+    grid-template-areas: "img . . . . end"
+                         "img name        name      author        rating    end"
+                         "img description description description year      end"
+                         "img . . . . end"
+                         ". . . . . end";
+
+    grid-template-columns: auto auto auto 1fr auto;
+    grid-template-rows: auto 1rem 2rem auto;
+    align-items: baseline;
+    gap: 1em;
+    break-inside: avoid;
+
+    &::before {
+        content: "";
+        display: block;
+        background: #eeeeee;
+    }
+    &:hover::before {
+        background: #dddddd;
+    }
+    &::before, a:empty {
+        grid-row: 1 / 5;
+        grid-column: 1 / 7;
+        align-self: stretch;
+        border-radius: 0.5em;
+        padding: 0;
+        margin: 0;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    td:not(:first-child) {
+        pointer-events: none;
+    }
+
+    [itemprop="image"] {
+        grid-area: img;
+
+        @media screen and (max-width: 600px) {
+            display: none;
+        }
+    }
+    [itemprop="name"] {
+        grid-area: name;
+    }
+    [itemprop="author"] {
+        grid-area: author;
+        font-size: 0.9em;
+        font-style: italic;
+    }
+    [itemprop="datePublished"] {
+        grid-area: year;
+        font-size: 0.9em;
+        text-align: right;
+        align-self: end;
+    }
+    [itemprop="description"] {
+        grid-area: description;
+        color: rgba(0,0,0,0.8);
+    }
+    [itemprop="aggregateRating"] {
+        grid-area: rating;
+        text-align: right;
+    }
+}

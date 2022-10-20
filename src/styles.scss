@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 16px;
+    --viewport-small-max: 800px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-size: clamp(14px, 1vw, 20px);
+}
+
+main {
+    padding: 1em;
+}
+
+p {
+    color: rgba(0,0,0,0.9);
+}
+
+fieldset {
+    padding: 0;
+    border: 0;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    white-space: nowrap;
+    gap: 1em;
+    width: 100%;
+}
+
+input, button, select, textarea {
+    padding: 0.5em 1em;
+
+    &:invalid {
+        border-color: red;
+        background-color: #ffcccc;
+    }
+
+    label > & {
+        width: 100%;
+    }
+}
+
+textarea {
+    min-width: 100%;
+    min-height: 10em;
+}
+
+img {
+    display: block;
+}
+
+.book-image {
+    width: 4em;
+    aspect-ratio: 20 / 30;
+    background: #333333;
+    border-radius: 0.5em;
+}

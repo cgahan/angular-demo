@@ -1,0 +1,20 @@
+<table>
+    <tr itemscope itemtype="https://schema.org/Person" *ngFor="let author of authors">
+        <td itemprop="name">
+            <a [routerLink]="['/authors', author.id]">{{author}}</a>
+        </td>
+        <td hidden itemprop="givenName">
+            {{author?.givenName}}
+        </td>
+        <td hidden itemprop="familyName">
+            {{author?.familyName}}
+        </td>
+        <td>
+            <ul class="book-list">
+                <li *ngFor="let book of (author?.books ?? [])">
+                    <a [routerLink]="['/books', book.id]">{{book?.title ?? "Untitled"}}</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+</table>

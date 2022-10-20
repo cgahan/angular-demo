@@ -1,0 +1,27 @@
+fieldset {
+    display: flex;
+    padding: 0;
+    border: 0;
+    font-size: 2em;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    &:hover {
+        opacity: 0.5;
+    }
+}
+
+label::before {
+    content: "★";
+    display: block;
+    width: 0.8em;
+}
+input:checked + * + * + * + * + * ~ label::before {
+    content: "☆";
+}

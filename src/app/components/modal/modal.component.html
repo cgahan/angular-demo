@@ -1,0 +1,11 @@
+<dialog #dialog (close)="cancel()">
+    <form #form method="dialog" (submit)="submit($event)">
+        <fieldset>
+            <ng-content></ng-content>
+        </fieldset>
+        <fieldset class="modal-bottom">
+            <button type="submit">OK</button>
+            <button type="reset" (click)="cancel()">Cancel</button>
+        </fieldset>
+    </form>
+</dialog>

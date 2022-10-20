@@ -1,0 +1,23 @@
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em 2em;
+
+    padding: 0;
+    list-style-position: inside;
+
+    li {
+        display: inline list-item;
+    }
+}
+
+[itemprop="name"] {
+    font-weight: bold;
+    padding-right: 2em;
+}
+
+@media (max-width: 800px) {
+    :is(table, tr, td):not([hidden]) {
+        display: block;
+    }
+}

@@ -1,0 +1,4 @@
+<article>
+    <h1>{{author}}</h1>
+    <app-book-list [books]="author?.books ?? []" [allowModal]="false"></app-book-list>
+</article>
